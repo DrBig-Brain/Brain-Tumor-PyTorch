@@ -5,6 +5,7 @@ import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
 from PIL import Image
+import pandas as pd
 
 model = torchvision.models.vgg16(pretrained=False)
 model.classifier=nn.Sequential(
@@ -40,8 +41,7 @@ if file is not None:
         probs = torch.nn.functional.softmax(output,dim=1)
         pred = np.argmax(probs).item()
         pred_class = classes[pred]
-
-    st.write(f"### predicted {pred_class}")
+    df = pd.DataFrame({'Class':classes,'Pobablity':probs[0]})
+    st.write(f"### Predicted : {pred_class}")
     st.write('confidence score:')
-    for idx, score in enumerate(probs[0]):
-        st.write(f"{classes[idx]}:{score.item():.4f}")
+    st.bar_chart(df.set_index('Class'))
