@@ -75,7 +75,7 @@ The model achieves:
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project was made under SPEC, NIT Hamirpur for more information visit https://spec.nith.ac.in.
 
 ## Contributing
 
